@@ -1,0 +1,371 @@
+{
+  "data": {
+    "pets": [
+      {
+        "mouraId": 4222639,
+        "name": "ABEL",
+        "microchip": "963003100041585",
+        "unit": {
+          "document": "18328118000109",
+          "city": {
+            "code": 8889,
+            "name": "SAO PAULO"
+          },
+          "state": "SP",
+          "name": "Petz Marginal Tiete",
+          "companyName": "Petz Marginal Tiete"
+        },
+        "ngo": {
+          "document": "05842110000114",
+          "name": "PROJETO CEL"
+        },
+        "gender": "MALE",
+        "size": "Medio",
+        "cadpetzId": 6595475,
+        "image": {
+          "thumb": "https://s3.amazonaws.com/petz-cdm-stg/30db0ccd-cf21-4d13-8718-db8beb220859.jpeg",
+          "photo": "https://s3.amazonaws.com/petz-cdm-stg/30db0ccd-cf21-4d13-8718-db8beb220859.jpeg"
+        },
+        "birthDate": "2023-04-06",
+        "weight": 6.0,
+        "specie": "Cachorros",
+        "favorite": false
+      },
+      {
+        "mouraId": 4213651,
+        "name": "Anita ",
+        "microchip": "981020002238222",
+        "unit": {
+          "document": "18328118008193",
+          "city": {
+            "code": 7756,
+            "name": "JOINVILLE"
+          },
+          "state": "SC",
+          "name": "Petz Joinville",
+          "companyName": "Petz Joinville"
+        },
+        "ngo": {
+          "document": "43531447000108",
+          "name": "Coletivo Miau"
+        },
+        "gender": "FEMALE",
+        "size": "Medio",
+        "cadpetzId": 6582466,
+        "image": {
+          "thumb": "https://s3.amazonaws.com/petz-cdm-stg/4163160e-d7f9-4d33-b1ff-4f07bfba2c8c.jpeg",
+          "photo": "https://s3.amazonaws.com/petz-cdm-stg/4163160e-d7f9-4d33-b1ff-4f07bfba2c8c.jpeg"
+        },
+        "birthDate": "2023-07-20",
+        "weight": 8.0,
+        "specie": "Cachorros",
+        "favorite": false
+      },
+      {
+        "mouraId": 4222646,
+        "name": "ARIANE",
+        "microchip": "963003100041590",
+        "unit": {
+          "document": "18328118000109",
+          "city": {
+            "code": 8889,
+            "name": "SAO PAULO"
+          },
+          "state": "SP",
+          "name": "Petz Marginal Tiete",
+          "companyName": "Petz Marginal Tiete"
+        },
+        "ngo": {
+          "document": "05842110000114",
+          "name": "PROJETO CEL"
+        },
+        "gender": "FEMALE",
+        "size": "Medio",
+        "cadpetzId": 6595485,
+        "image": {
+          "thumb": "https://s3.amazonaws.com/petz-cdm-stg/a476c30b-5d1b-4bba-a2c3-98404f1ed24c.jpeg",
+          "photo": "https://s3.amazonaws.com/petz-cdm-stg/a476c30b-5d1b-4bba-a2c3-98404f1ed24c.jpeg"
+        },
+        "birthDate": "2023-04-06",
+        "weight": 5.0,
+        "specie": "Cachorros",
+        "favorite": false
+      },
+      {
+        "mouraId": 4204759,
+        "name": "Arthur",
+        "microchip": "963003100160613",
+        "unit": {
+          "document": "18328118006140",
+          "city": {
+            "code": 8889,
+            "name": "SAO PAULO"
+          },
+          "state": "SP",
+          "name": "Petz Washington Luís",
+          "companyName": "Petz Washington Luís"
+        },
+        "ngo": {
+          "document": "01490362000170",
+          "name": "ASSOC PAULISTA DE AUX AOS ANIMAIS APAA"
+        },
+        "gender": "MALE",
+        "size": "Medio",
+        "cadpetzId": 6557873,
+        "image": {
+          "thumb": "https://s3.amazonaws.com/petz-cdm-stg/da87f2b6-7391-45bf-8862-5ca6521cd7c7.jpeg",
+          "photo": "https://s3.amazonaws.com/petz-cdm-stg/da87f2b6-7391-45bf-8862-5ca6521cd7c7.jpeg"
+        },
+        "birthDate": "2023-03-01",
+        "weight": 5.0,
+        "specie": "Cachorros",
+        "favorite": false
+      },
+      {
+        "mouraId": 4222641,
+        "name": "ARTUR",
+        "microchip": "963003100041555",
+        "unit": {
+          "document": "18328118000109",
+          "city": {
+            "code": 8889,
+            "name": "SAO PAULO"
+          },
+          "state": "SP",
+          "name": "Petz Marginal Tiete",
+          "companyName": "Petz Marginal Tiete"
+        },
+        "ngo": {
+          "document": "05842110000114",
+          "name": "PROJETO CEL"
+        },
+        "gender": "MALE",
+        "size": "Medio",
+        "cadpetzId": 6595478,
+        "image": {
+          "thumb": "https://s3.amazonaws.com/petz-cdm-stg/2395ad2f-e69a-41dd-9172-97699be81cea.jpeg",
+          "photo": "https://s3.amazonaws.com/petz-cdm-stg/2395ad2f-e69a-41dd-9172-97699be81cea.jpeg"
+        },
+        "birthDate": "2023-04-06",
+        "weight": 6.0,
+        "specie": "Cachorros",
+        "favorite": false
+      },
+      {
+        "mouraId": 4213937,
+        "name": "Bela ",
+        "microchip": "963003100124902",
+        "unit": {
+          "document": "18328118004368",
+          "city": {
+            "code": 1644,
+            "name": "BRASILIA"
+          },
+          "state": "DF",
+          "name": "Petz Brasília Epia",
+          "companyName": "Petz Brasília Epia"
+        },
+        "ngo": {
+          "document": "36819272000246",
+          "name": "TOCA SEGURA BRASÍLIA "
+        },
+        "gender": "FEMALE",
+        "size": "Grande",
+        "cadpetzId": 6582841,
+        "image": {
+          "thumb": "https://s3.amazonaws.com/petz-cdm-stg/45e29a05-bab5-468e-9945-2b9410d2bc99.jpeg",
+          "photo": "https://s3.amazonaws.com/petz-cdm-stg/45e29a05-bab5-468e-9945-2b9410d2bc99.jpeg"
+        },
+        "birthDate": "2023-07-01",
+        "weight": 8.0,
+        "specie": "Cachorros",
+        "favorite": false
+      },
+      {
+        "mouraId": 3047631,
+        "name": "BELLA",
+        "microchip": "900115002657977",
+        "unit": {
+          "document": "18328118004600",
+          "city": {
+            "code": 8846,
+            "name": "SANTO ANDRE"
+          },
+          "state": "SP",
+          "name": "Petz Santo André",
+          "companyName": "Petz Santo André"
+        },
+        "ngo": {
+          "document": "05299525000193",
+          "name": "CLUBE DOS VIRA LATAS- GRUPO DE PROTEÇÃO AOS "
+        },
+        "gender": "FEMALE",
+        "size": "Medio",
+        "cadpetzId": 4936623,
+        "image": {
+          "thumb": "https://s3.amazonaws.com/petz-cdm-stg/8fce773e-f5f6-4f0b-b43a-236490f69846.jpeg",
+          "photo": "https://s3.amazonaws.com/petz-cdm-stg/8fce773e-f5f6-4f0b-b43a-236490f69846.jpeg"
+        },
+        "birthDate": "2021-06-01",
+        "weight": 0.0,
+        "specie": "Cachorros",
+        "favorite": false
+      },
+      {
+        "mouraId": 3674707,
+        "name": "Benito ",
+        "microchip": "963003100124615",
+        "unit": {
+          "document": "18328118004368",
+          "city": {
+            "code": 1644,
+            "name": "BRASILIA"
+          },
+          "state": "DF",
+          "name": "Petz Brasília Epia",
+          "companyName": "Petz Brasília Epia"
+        },
+        "ngo": {
+          "document": "36819272000246",
+          "name": "TOCA SEGURA BRASÍLIA "
+        },
+        "gender": "MALE",
+        "size": "Pequeno",
+        "cadpetzId": 6250316,
+        "image": {
+          "thumb": "https://s3.amazonaws.com/petz-cdm-stg/1b77f77f-71f4-49d9-997e-1eb615681602.jpeg",
+          "photo": "https://s3.amazonaws.com/petz-cdm-stg/1b77f77f-71f4-49d9-997e-1eb615681602.jpeg"
+        },
+        "birthDate": "2021-01-01",
+        "weight": 6.0,
+        "specie": "Cachorros",
+        "favorite": false
+      },
+      {
+        "mouraId": 4188051,
+        "name": "Berenice",
+        "microchip": "963003100113878",
+        "unit": {
+          "document": "18328118014240",
+          "city": {
+            "code": 7230,
+            "name": "PELOTAS"
+          },
+          "state": "RS",
+          "name": "Petz Pelotas",
+          "companyName": "Petz Pelotas"
+        },
+        "ngo": {
+          "document": "85585483072",
+          "name": "Gabriela dos Anjos"
+        },
+        "gender": "FEMALE",
+        "size": "Medio",
+        "cadpetzId": 6538235,
+        "image": {
+          "thumb": "https://s3.amazonaws.com/petz-cdm-stg/8915540d-a538-4890-8be0-8373cbfb7b9b.jpeg",
+          "photo": "https://s3.amazonaws.com/petz-cdm-stg/8915540d-a538-4890-8be0-8373cbfb7b9b.jpeg"
+        },
+        "birthDate": "2023-02-16",
+        "weight": 4.0,
+        "specie": "Cachorros",
+        "favorite": false
+      },
+      {
+        "mouraId": 4159233,
+        "name": "Bily ",
+        "microchip": "963003100124907",
+        "unit": {
+          "document": "18328118004368",
+          "city": {
+            "code": 1644,
+            "name": "BRASILIA"
+          },
+          "state": "DF",
+          "name": "Petz Brasília Epia",
+          "companyName": "Petz Brasília Epia"
+        },
+        "ngo": {
+          "document": "36819272000246",
+          "name": "TOCA SEGURA BRASÍLIA "
+        },
+        "gender": "MALE",
+        "size": "Pequeno",
+        "cadpetzId": 6495011,
+        "image": {
+          "thumb": "https://s3.amazonaws.com/petz-cdm-stg/b447abff-cc84-4b23-bf50-639289ba12f5.jpeg",
+          "photo": "https://s3.amazonaws.com/petz-cdm-stg/b447abff-cc84-4b23-bf50-639289ba12f5.jpeg"
+        },
+        "birthDate": "2022-07-01",
+        "weight": 6.0,
+        "specie": "Cachorros",
+        "favorite": false
+      },
+      {
+        "mouraId": 4164716,
+        "name": "Bimbo ",
+        "microchip": "963003100036867",
+        "unit": {
+          "document": "18328118000451",
+          "city": {
+            "code": 1644,
+            "name": "BRASILIA"
+          },
+          "state": "DF",
+          "name": "Petz Brasília SIA",
+          "companyName": "Petz Brasília SIA"
+        },
+        "ngo": {
+          "document": "36819272000246",
+          "name": "TOCA SEGURA BRASÍLIA "
+        },
+        "gender": "MALE",
+        "size": "Grande",
+        "cadpetzId": 6502971,
+        "image": {
+          "thumb": "https://s3.amazonaws.com/petz-cdm-stg/9bcab7d1-7e23-4fb3-92ca-62d770b34b75.jpeg",
+          "photo": "https://s3.amazonaws.com/petz-cdm-stg/9bcab7d1-7e23-4fb3-92ca-62d770b34b75.jpeg"
+        },
+        "birthDate": "2021-01-01",
+        "weight": 12.0,
+        "specie": "Cachorros",
+        "favorite": false
+      },
+      {
+        "mouraId": 4129682,
+        "name": "Bingo",
+        "microchip": "945000009232858",
+        "unit": {
+          "document": "18328118001261",
+          "city": {
+            "code": 8889,
+            "name": "SAO PAULO"
+          },
+          "state": "SP",
+          "name": "Petz Limão",
+          "companyName": "Petz Limão"
+        },
+        "ngo": {
+          "document": "21891984000118",
+          "name": "ASSOCIAÇÃO PROTETORA DOS ANIMAIS TUDO POR EL"
+        },
+        "gender": "MALE",
+        "size": "Medio",
+        "cadpetzId": 6450361,
+        "image": {
+          "thumb": "https://s3.amazonaws.com/petz-cdm-stg/2bf273f3-0190-4820-a11f-65d72970814d.jpeg",
+          "photo": "https://s3.amazonaws.com/petz-cdm-stg/2bf273f3-0190-4820-a11f-65d72970814d.jpeg"
+        },
+        "birthDate": "2022-11-10",
+        "weight": 7.0,
+        "specie": "Cachorros",
+        "favorite": false
+      }
+    ],
+    "totalItems": 361,
+    "totalPages": 31,
+    "currentPage": 1
+  },
+  "message": null,
+  "status_code": 200
+}
