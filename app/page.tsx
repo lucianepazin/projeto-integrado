@@ -14,7 +14,7 @@ export default async function Home() {
       oi{" "}
       {pets.map((pet: Pet) => (
         // <div key={pet?.id}>{pet?.name}</div>
-        <BasicCard pet={pet} />
+        <BasicCard pet={pet} key={pet.mouraId} />
       ))}
     </Container>
   );
