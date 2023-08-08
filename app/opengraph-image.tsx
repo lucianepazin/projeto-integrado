@@ -49,12 +49,6 @@ export default async function OG() {
     {
       width: 1200,
       height: 630,
-      fonts: [
-        {
-          name: "SF Pro",
-          data: sfPro,
-        },
-      ],
     },
   );
 }
