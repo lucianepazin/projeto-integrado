@@ -22,17 +22,19 @@ const authOptions: NextAuthOptions = {
         if (!email || !password) {
           throw new Error("Missing username or password");
         }
-        const user = await prisma.user.findUnique({
+        const user = await prisma.usuario.findUnique({
           where: {
             email,
           },
         });
         // if user doesn't exist or password doesn't match
-        if (!user || !(await compare(password, user.password))) {
+        if (!user || !(await compare(password, user.senha))) {
           throw new Error("Invalid username or password");
         }
-        console.log(await compare(password, user.password), user, password);
-        return user;
+        return {
+          id: "" + user.codUsuario,
+          ...user,
+        };
       },
     }),
   ],
