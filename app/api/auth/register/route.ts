@@ -1,8 +1,8 @@
 import prisma from "@/lib/prisma";
 import { hash } from "bcrypt";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   const { email, password } = await req.json();
   const exists = await prisma.usuario.findUnique({
     where: {
@@ -14,7 +14,7 @@ export async function POST(req: Request) {
   } else {
     const user = await prisma.usuario.create({
       data: {
-        email,
+        email: email.toLowerCase(),
         senha: await hash(password, 10),
       },
     });

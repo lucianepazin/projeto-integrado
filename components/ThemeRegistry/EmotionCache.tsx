@@ -78,7 +78,7 @@ export default function NextAppDirEmotionCacheProvider(
       <React.Fragment>
         {globals.map(({ name, style }) => (
           <style
-            key={name}
+            key={name + style}
             data-emotion={`${registry.cache.key}-global ${name}`}
             // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{ __html: style }}

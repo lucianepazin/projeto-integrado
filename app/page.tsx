@@ -9,10 +9,18 @@ export default async function Home() {
     .then((res) => res.json())
     .catch((e) => console.log(e));
 
+  // const a = await fetch(process.env.API_URL + "api/pets", {
+  //   method: "POST",
+  //   headers: { Cookie: cookies().toString() },
+  // });
+  // .then((res) => res.json())
+  // .catch((e) => console.log(e));
+  // const a = await getServerSession(authOptions);
+  // console.log("a", a);
   return (
     <Container sx={{ display: "flex", flexWrap: "wrap" }}>
       {pets.map((pet: Pet) => (
-        <BasicCard pet={pet} key={pet.mouraId} />
+        <BasicCard pet={pet} key={pet.mouraId + pet.name} />
       ))}
     </Container>
   );
