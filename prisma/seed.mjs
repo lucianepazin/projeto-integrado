@@ -1,36 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import { hash } from "bcrypt";
+import dataEstados from "./estados.json" assert { type: "json" };
 import municipios from "./municipios.json" assert { type: "json" };
-
-const dataEstados = [
-  { codEstado: 11, nome: "Rondônia" },
-  { codEstado: 12, nome: "Acre" },
-  { codEstado: 13, nome: "Amazonas" },
-  { codEstado: 14, nome: "Roraima" },
-  { codEstado: 15, nome: "Pará" },
-  { codEstado: 16, nome: "Amapá" },
-  { codEstado: 17, nome: "Tocantins" },
-  { codEstado: 21, nome: "Maranhão" },
-  { codEstado: 22, nome: "Piauí" },
-  { codEstado: 23, nome: "Ceará" },
-  { codEstado: 24, nome: "Rio Grande do Norte" },
-  { codEstado: 25, nome: "Paraíba" },
-  { codEstado: 26, nome: "Pernambuco" },
-  { codEstado: 27, nome: "Alagoas" },
-  { codEstado: 28, nome: "Sergipe" },
-  { codEstado: 29, nome: "Bahia" },
-  { codEstado: 31, nome: "Minas Gerais" },
-  { codEstado: 32, nome: "Espírito Santo" },
-  { codEstado: 33, nome: "Rio de Janeiro" },
-  { codEstado: 35, nome: "São Paulo" },
-  { codEstado: 41, nome: "Paraná" },
-  { codEstado: 42, nome: "Santa Catarina" },
-  { codEstado: 43, nome: "Rio Grande do Sul" },
-  { codEstado: 50, nome: "Mato Grosso do Sul" },
-  { codEstado: 51, nome: "Mato Grosso" },
-  { codEstado: 52, nome: "Goiás" },
-  { codEstado: 53, nome: "Distrito Federal" },
-];
 
 const prisma = new PrismaClient();
 
@@ -41,21 +12,11 @@ async function main() {
     create: {
       email: "pessoa@adotante.com",
       senha: await hash("123456", 10),
+      habilitado: true,
     },
   });
-  const pessoaAdotante = await prisma.pessoaAdotante.upsert({
-    where: { codUsuario: user.codUsuario },
-    update: {},
-    create: {
-      codUsuario: user.codUsuario,
-      nome: "Pessoa Adotante",
-      CPF: "12345678910",
-      codEndereco: 1,
-      telefone: "123456789",
-      celular: "123456789",
-    },
-  });
-  const dicinarioEstado = await prisma.DicinarioEstado.createMany({
+
+  const dicionarioEstado = await prisma.DicionarioEstado.createMany({
     data: dataEstados,
     skipDuplicates: true,
   });
@@ -63,6 +24,84 @@ async function main() {
     data: municipios,
     skipDuplicates: true,
   });
+  const endereco = await prisma.endereco.upsert({
+    where: { codEndereco: 1 },
+    update: {},
+    create: {
+      logradouro: "Rua A",
+      numero: "123",
+      bairro: "Bairro A",
+      completemento: "Complemento A",
+      CEP: "12345678",
+      codCidade: 1200104,
+      codEstado: 12,
+    },
+  });
+
+  const pessoaAdotante = await prisma.pessoaAdotante.upsert({
+    where: { codUsuario: user.codUsuario },
+    update: {},
+    create: {
+      codUsuario: user.codUsuario,
+      nome: "Pessoa Adotante",
+      CPF: "67347164060",
+      codEndereco: 1,
+      telefone: "123456789",
+      celular: "123456789",
+    },
+  });
+
+  const userONG = await prisma.usuario.upsert({
+    where: { email: "pessoa@ong.com" },
+    update: {},
+    create: {
+      email: "pessoa@ong.com",
+      senha: await hash("123456", 10),
+      habilitado: true,
+    },
+  });
+
+  const pessoaONG = await prisma.pessoaONG.upsert({
+    where: { codUsuario: user.codUsuario },
+    update: {},
+    create: {
+      nomeONG: "ONG 1",
+      CNPJ: "97115138000178",
+      nomeResp: "Pessoa ONG",
+      CPFResp: "92997705061",
+      telefone: "123456789",
+      codEndereco: 1,
+      codUsuario: userONG.codUsuario,
+    },
+  });
+
+  const pet = await prisma.pet.upsert({
+    where: { codPet: 1 },
+    update: {},
+    create: {
+      codPessoaONG: pessoaONG.codPessoaONG,
+      tipo: "Cachorro",
+      nome: "Pet 1",
+      idade: "1 ano",
+      cor: "Preto",
+      porte: "Grande",
+      descricao: "Pet 1",
+      instituicao: "ONG 1",
+      telefone: "123456789",
+      codCidade: 1200104,
+      codEstado: 12,
+    },
+  });
+
+  const petsONG = await prisma.petsONG.upsert({
+    where: { codPetsONG: 1 },
+    update: {},
+    create: {
+      codPessoaONG: pessoaONG.codPessoaONG,
+      codPet: pet.codPet,
+    },
+  });
+
   console.log("Seed realizado com sucesso.");
 }
 

@@ -20,19 +20,3 @@ interface Image {
   thumb: string;
   photo: string;
 }
-
-export interface Pet {
-  mouraId: number;
-  name: string;
-  microchip: string;
-  unit: Unit;
-  ngo: Ngo;
-  gender: string;
-  size: string;
-  cadpetzId: number;
-  image: Image;
-  birthDate: string;
-  weight: number;
-  specie: string;
-  favorite: boolean;
-}

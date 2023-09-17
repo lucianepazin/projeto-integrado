@@ -45,13 +45,16 @@ model PessoaONG {
   CNPJ         String
   nomeResp     String
   CPFResp      String
-  teelfone     String
+  telefone     String
   codEndereco  Int
 
   usuario Usuario   @relation(fields: [codUsuario], references: [codUsuario])
   petsONG petsONG[]
 }
 
+//e a imagem?
+//codPessoaONG tá redundante?
+// como gravar idade? tem que ser data de nascimento
 model Pet {
   codPet       Int    @id @default(autoincrement())
   codPessoaONG Int
@@ -84,11 +87,11 @@ model DicionarioCidade {
   nome      String
   codEstado Int
 
-  dicinarioEstado DicinarioEstado @relation(fields: [codEstado], references: [codEstado])
-  Endereco        Endereco[]
+  dicionarioEstado DicionarioEstado @relation(fields: [codEstado], references: [codEstado])
+  Endereco         Endereco[]
 }
 
-model DicinarioEstado {
+model DicionarioEstado {
   codEstado Int    @id @default(autoincrement())
   nome      String
 
@@ -107,7 +110,7 @@ model Endereco {
   codEstado     Int
 
   dicionarioCidade DicionarioCidade @relation(fields: [codCidade], references: [codCidade])
-  dicinarioEstado  DicinarioEstado  @relation(fields: [codEstado], references: [codEstado])
+  dicionarioEstado DicionarioEstado @relation(fields: [codEstado], references: [codEstado])
 }
 
 model InteresseAdocao {
