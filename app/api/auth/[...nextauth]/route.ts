@@ -30,20 +30,47 @@ const authOptions: NextAuthOptions = {
           where: {
             email: email.toLowerCase(),
           },
+          include: {
+            PessoaAdotante: true,
+            pessoaONG: true,
+          },
         });
         // if user doesn't exist or password doesn't match
         if (!user || !(await compare(password, user.senha))) {
           throw new Error("Invalid username or password");
         }
+        const { senha, ...usuario } = user;
         return {
           id: user.codUsuario,
-          ...user,
+          ...usuario,
         };
       },
     }),
   ],
   session: {
     strategy: "jwt",
+  },
+  callbacks: {
+    async jwt({ account, token, user, profile, session, trigger }) {
+      if (user) {
+        token.email = user.email;
+        token.id = user.id;
+        token.name = user?.PessoaAdotante?.nome ?? user.pessoaONG?.nomeResp;
+        token.role = user?.PessoaAdotante ? "adotante" : "ong";
+      }
+      return token;
+    },
+    session({ session, token }) {
+      /* Step 2: update the session.user based on the token object */
+      return {
+        ...session,
+        user: {
+          ...session.user,
+          id: token.id,
+          role: token.role,
+        },
+      };
+    },
   },
 };
 

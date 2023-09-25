@@ -62,7 +62,7 @@ async function main() {
   });
 
   const pessoaONG = await prisma.pessoaONG.upsert({
-    where: { codUsuario: user.codUsuario },
+    where: { codUsuario: userONG.codUsuario },
     update: {},
     create: {
       nomeONG: "ONG 1",
@@ -79,13 +79,19 @@ async function main() {
     where: { codPet: 1 },
     update: {},
     create: {
-      codPessoaONG: pessoaONG.codPessoaONG,
       tipo: "Cachorro",
-      nome: "Pet 1",
-      idade: "1 ano",
+      nome: "Pedro",
+      dataNascimento: new Date("2021-01-01"),
+      fotoUrl: "https://images.dog.ceo/breeds/tervuren/yoda_in_car.jpg",
       cor: "Preto",
       porte: "Grande",
-      descricao: "Pet 1",
+      descricao: `Ele possui uma pelagem preta, o que lhe confere uma aparência imponente e elegante.
+      Pedro pertence ao porte grande, o que significa que ele é um cão de tamanho considerável e
+       pode ter uma presença imponente e majestosa.
+      Ele vive em Brasiléia, uma cidade localizada no estado do Acre, Brasil. 
+      Com sua pelagem escura e seu porte grande, Pedro pode ser um cão imponente e carinhoso,
+       pronto para explorar a natureza exuberante da região do Acre e
+       desfrutar de longas caminhadas ao ar livre com seu dono.`,
       instituicao: "ONG 1",
       telefone: "123456789",
       codCidade: 1200104,

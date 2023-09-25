@@ -3,23 +3,23 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { DicionarioCidade, DicionarioEstado, Pet } from "@prisma/client";
+import { intervalToDuration } from "date-fns";
 import Link from "next/link";
 
 export default function PetCard({
   pet,
   cities,
   states,
-  imageURL,
 }: {
   pet: Pet;
   cities: DicionarioCidade[];
   states: DicionarioEstado[];
-  imageURL: string;
 }) {
-  // const age = intervalToDuration({
-  //   start: new Date(),
-  //   end: new Date(pet?.birthDate),
-  // });
+  console.log(pet?.dataNascimento);
+  const age = intervalToDuration({
+    start: new Date(),
+    end: pet?.dataNascimento,
+  });
   const city = cities?.find((city) => city.codCidade === pet?.codCidade);
   const state = states?.find((state) => state.codEstado === pet?.codEstado);
 
@@ -28,7 +28,7 @@ export default function PetCard({
       <CardActionArea LinkComponent={Link} href={`/pet/${pet.codPet}`}>
         <CardMedia
           sx={{ height: 240, width: 240 }}
-          image={imageURL}
+          image={pet.fotoUrl}
           title="Cachorro"
         />
         <CardContent>
@@ -42,14 +42,16 @@ export default function PetCard({
 
 </Typography> */}
           <Typography variant="body2">
-            {pet?.idade} - {pet?.cor}
+            {age?.years !== undefined &&
+              age.years > 0 &&
+              age.years + " anos e "}
+            {age.months} meses - {pet?.cor}
             <br />
             Porte {pet?.porte}
             <br />
             {city?.nome} - {state?.nome}
             {/* <City codCidade={pet?.codCidade} /> */}
-            {/* {age?.years !== undefined && age.years > 0 && age.years + " anos e "}
-          {age.months} meses
+            {/* 
           <br />
         {'"a benevolent smile"'} */}
           </Typography>

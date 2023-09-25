@@ -28,16 +28,16 @@ export default async function Home() {
     "status": "success"
 }
    */
-  const { message: dogPhotosUrlList }: { message: string[]; status: string } = {
-    message: [
-      "https://images.dog.ceo/breeds/mastiff-bull/n02108422_3440.jpg",
-      "https://images.dog.ceo/breeds/dane-great/n02109047_5331.jpg",
-      "https://images.dog.ceo/breeds/mountain-bernese/n02107683_3655.jpg",
-      "https://images.dog.ceo/breeds/sharpei/noel.jpg",
-      "https://images.dog.ceo/breeds/terrier-yorkshire/n02094433_1483.jpg",
-    ],
-    status: "success",
-  };
+  // const { message: dogPhotosUrlList }: { message: string[]; status: string } = {
+  //   message: [
+  //     "https://images.dog.ceo/breeds/mastiff-bull/n02108422_3440.jpg",
+  //     "https://images.dog.ceo/breeds/dane-great/n02109047_5331.jpg",
+  //     "https://images.dog.ceo/breeds/mountain-bernese/n02107683_3655.jpg",
+  //     "https://images.dog.ceo/breeds/sharpei/noel.jpg",
+  //     "https://images.dog.ceo/breeds/terrier-yorkshire/n02094433_1483.jpg",
+  //   ],
+  //   status: "success",
+  // };
   // await fetch("https://dog.ceo/api/breeds/image/random/5")
   //   .then((res) => res.json())
   //   .catch((e) => console.log(e));
@@ -53,13 +53,7 @@ export default async function Home() {
   return (
     <Container sx={{ display: "flex", flexWrap: "wrap" }}>
       {peeeets.map((pet: Pet, index) => (
-        <PetCard
-          pet={pet}
-          key={pet.codPet}
-          cities={cities}
-          states={states}
-          imageURL={dogPhotosUrlList?.[index]}
-        />
+        <PetCard pet={pet} key={pet.codPet} cities={cities} states={states} />
       ))}
     </Container>
   );

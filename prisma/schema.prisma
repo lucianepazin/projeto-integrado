@@ -52,22 +52,19 @@ model PessoaONG {
   petsONG petsONG[]
 }
 
-//e a imagem?
-//codPessoaONG tá redundante?
-// como gravar idade? tem que ser data de nascimento
 model Pet {
-  codPet       Int    @id @default(autoincrement())
-  codPessoaONG Int
-  tipo         String
-  nome         String
-  idade        String
-  cor          String
-  porte        String
-  descricao    String
-  instituicao  String
-  telefone     String
-  codCidade    Int
-  codEstado    Int
+  codPet         Int      @id @default(autoincrement())
+  tipo           String
+  nome           String
+  dataNascimento DateTime @db.Date
+  cor            String
+  porte          String
+  descricao      String
+  instituicao    String
+  telefone       String
+  fotoUrl        String
+  codCidade      Int
+  codEstado      Int
 
   interesseAdocao InteresseAdocao[]
   petsONG         petsONG[]
