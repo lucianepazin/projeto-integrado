@@ -14,6 +14,7 @@ export default function LoginModalProvider({
   const [open, setOpen] = useState(false);
 
   //TODO: receber o texto da mensagem pra aparecer quando for login por tentar adotar
+  //TODO: receber callback pra executar quando fechar o modal
   const handleOpenLogin = () => setOpen(true);
   const handleCloseLogin = () => setOpen(false);
   return (

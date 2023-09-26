@@ -22,7 +22,7 @@ export default async function page({ params }: { params: { codPet: string } }) {
   });
   return (
     <div>
-      <Typography variant="h3" color="primary">
+      <Typography variant="h3" color="primary" sx={{ m: 2 }}>
         Encontre seu novo melhor amigo
       </Typography>
       <Card sx={{ p: 2 }}>

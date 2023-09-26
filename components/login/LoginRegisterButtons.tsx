@@ -12,13 +12,7 @@ export default function LoginRegisterButtons() {
   if (status === "authenticated") {
     return (
       <Box>
-        <Button
-          variant="outlined"
-          onClick={() => {
-            console.log("oi");
-            signOut();
-          }}
-        >
+        <Button variant="outlined" onClick={() => signOut()}>
           Logout
         </Button>
         <Button variant="contained" sx={{ ml: 2 }}>

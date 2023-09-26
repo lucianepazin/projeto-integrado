@@ -4,7 +4,7 @@ import LoginRegisterButtons from "@/components/login/LoginRegisterButtons";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
+import Image from "next/image";
 import Link from "next/link";
 import { ReactNode } from "react";
 import { Toaster } from "react-hot-toast";
@@ -30,9 +30,19 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                   justifyContent: "space-between",
                 }}
               >
-                <Typography variant="h6" noWrap component={Link} href="/">
+                {/* <Typography variant="h6" noWrap component={Link} href="/">
                   Find a Pet
-                </Typography>
+                </Typography> */}
+                <Box component={Link} href="/" sx={{ mt: 2, ml: 2 }}>
+                  <Image
+                    src="/logo.svg"
+                    priority
+                    alt="Logo"
+                    width={89 * 0.8}
+                    height={58 * 0.8}
+                  />
+                </Box>
+
                 <LoginRegisterButtons />
               </Toolbar>
             </AppBar>
@@ -41,8 +51,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               sx={{
                 flexGrow: 1,
                 bgcolor: "background.default",
-                mt: ["48px", "56px", "64px"],
+                mt: "70px",
                 p: 3,
+                height: "calc(100vh - 70px)",
               }}
             >
               {children}

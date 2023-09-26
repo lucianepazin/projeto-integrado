@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { authOptions } from "../../../auth/[...nextauth]/route";
 
 export async function POST(
-  req: NextRequest,
+  _req: NextRequest,
   { params: { codPet } }: { params: { codPet: string } },
 ) {
   const session = await getServerSession(authOptions);
@@ -13,25 +13,11 @@ export async function POST(
     return new NextResponse(
       JSON.stringify({
         status: "fail",
-        message: "Só pessoas dotantes podem demonstrar interesse.",
+        message: "Só pessoas adotantes podem demonstrar interesse.",
       }),
       { status: 403 },
     );
 
-  // return new NextResponse(JSON.stringify({}), {
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  //   status: 201,
-  // });
-  //TODO: validar se é usuário adotante
-
-  /**
-  codInteresseAdocao Int      @id @default(autoincrement())
-  codPessoaAdotante  Int
-  codPet             Int
-  dataInteresse      DateTime @default(now())
-       */
   const codPessoaAdotante = await prisma.pessoaAdotante.findUnique({
     where: {
       codUsuario: session?.user.id,
@@ -44,6 +30,21 @@ export async function POST(
         message: "Você não é um adotante.",
       }),
       { status: 403 },
+    );
+
+  const interesse = await prisma.interesseAdocao.findFirst({
+    where: {
+      codPessoaAdotante: codPessoaAdotante.codPessoaAdotante,
+      codPet: Number(codPet),
+    },
+  });
+  if (interesse)
+    return new NextResponse(
+      JSON.stringify({
+        status: "fail",
+        message: "Você já demonstrou interesse nesse pet.",
+      }),
+      { status: 400 },
     );
   const newInteresse = await prisma.interesseAdocao.create({
     data: {

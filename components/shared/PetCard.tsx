@@ -15,7 +15,6 @@ export default function PetCard({
   cities: DicionarioCidade[];
   states: DicionarioEstado[];
 }) {
-  console.log(pet?.dataNascimento);
   const age = intervalToDuration({
     start: new Date(),
     end: pet?.dataNascimento,
@@ -25,7 +24,7 @@ export default function PetCard({
 
   return (
     <Card sx={{ minWidth: 240, width: 240, m: 2 }}>
-      <CardActionArea LinkComponent={Link} href={`/pet/${pet.codPet}`}>
+      <CardActionArea LinkComponent={Link} href={`/pets/${pet.codPet}`}>
         <CardMedia
           sx={{ height: 240, width: 240 }}
           image={pet.fotoUrl}
