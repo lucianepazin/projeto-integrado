@@ -1,10 +1,12 @@
 "use client";
 import { Dialog, DialogContent } from "@mui/material";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { SessionProvider } from "next-auth/react";
 import { ReactNode, createContext, useState } from "react";
 import Login from "./Login";
 
 export const LoginModalCtx = createContext<any>(null);
+const queryClient = new QueryClient();
 
 export default function LoginModalProvider({
   children,
@@ -18,20 +20,22 @@ export default function LoginModalProvider({
   const handleOpenLogin = () => setOpen(true);
   const handleCloseLogin = () => setOpen(false);
   return (
-    <SessionProvider>
-      <LoginModalCtx.Provider value={{ handleOpenLogin, handleCloseLogin }}>
-        {children}
+    <QueryClientProvider client={queryClient}>
+      <SessionProvider>
+        <LoginModalCtx.Provider value={{ handleOpenLogin, handleCloseLogin }}>
+          {children}
 
-        <Dialog
-          open={open}
-          onClose={() => setOpen(false)}
-          aria-label="Modal de login"
-        >
-          <DialogContent>
-            <Login />
-          </DialogContent>
-        </Dialog>
-      </LoginModalCtx.Provider>
-    </SessionProvider>
+          <Dialog
+            open={open}
+            onClose={() => setOpen(false)}
+            aria-label="Modal de login"
+          >
+            <DialogContent>
+              <Login />
+            </DialogContent>
+          </Dialog>
+        </LoginModalCtx.Provider>
+      </SessionProvider>
+    </QueryClientProvider>
   );
 }

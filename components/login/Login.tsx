@@ -9,6 +9,7 @@ import Grid from "@mui/material/Grid";
 import Link from "@mui/material/Link";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
+import { NOT_IMPLEMENTED } from "domain/systemMessages";
 import { signIn } from "next-auth/react";
 import { FormEvent, useContext, useState } from "react";
 import toast from "react-hot-toast";
@@ -20,44 +21,19 @@ export default function Login() {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setLoading(true);
-    // if (type === "login") {
-    if (true) {
-      signIn("credentials", {
-        redirect: false,
-        email: event.currentTarget.email.value,
-        password: event.currentTarget.password.value,
-        // @ts-ignore
-      }).then(({ error }) => {
-        if (error) {
-          setLoading(false);
-          toast.error(error);
-        } else {
-          handleCloseLogin();
-        }
-      });
-    } else {
-      // fetch("/api/auth/register", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify({
-      //     email: event.currentTarget.email.value,
-      //     password: event.currentTarget.password.value,
-      //   }),
-      // }).then(async (res) => {
-      //   setLoading(false);
-      //   if (res.status === 200) {
-      //     toast.success("Account created! Redirecting to login...");
-      //     setTimeout(() => {
-      //       router.push("/login");
-      //     }, 2000);
-      //   } else {
-      //     const { error } = await res.json();
-      //     toast.error(error);
-      //   }
-      // });
-    }
+    signIn("credentials", {
+      redirect: false,
+      email: event.currentTarget.email.value,
+      password: event.currentTarget.password.value,
+      // @ts-ignore
+    }).then(({ error }) => {
+      if (error) {
+        setLoading(false);
+        toast.error(error);
+      } else {
+        handleCloseLogin();
+      }
+    });
   };
 
   return (
@@ -108,12 +84,20 @@ export default function Login() {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="#" variant="body2">
+              <Link
+                href="#"
+                variant="body2"
+                onClick={() => toast.error(NOT_IMPLEMENTED)}
+              >
                 Esqueceu sua senha?
               </Link>
             </Grid>
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link
+                href="#"
+                variant="body2"
+                onClick={() => toast.error(NOT_IMPLEMENTED)}
+              >
                 Cadastre-se
               </Link>
             </Grid>

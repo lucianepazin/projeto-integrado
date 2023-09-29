@@ -3,6 +3,7 @@
 import { Box, Button } from "@mui/material";
 import { signOut, useSession } from "next-auth/react";
 import { useContext } from "react";
+import UnimplementedButton from "../shared/UnimplementedButton";
 import { LoginModalCtx } from "./LoginModalProvider";
 
 export default function LoginRegisterButtons() {
@@ -15,9 +16,9 @@ export default function LoginRegisterButtons() {
         <Button variant="outlined" onClick={() => signOut()}>
           Logout
         </Button>
-        <Button variant="contained" sx={{ ml: 2 }}>
+        <UnimplementedButton variant="contained" sx={{ ml: 2 }}>
           Minha conta
-        </Button>
+        </UnimplementedButton>
       </Box>
     );
   }
