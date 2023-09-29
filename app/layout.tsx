@@ -11,8 +11,8 @@ import { Toaster } from "react-hot-toast";
 
 //TODO trocar texto
 export const metadata = {
-  title: "Next.js App Router + Material UI v5",
-  description: "Next.js App Router + Material UI v5",
+  title: "Find a pet",
+  description: "Encontre seu novo melhor amigo!",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
