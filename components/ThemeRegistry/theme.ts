@@ -12,6 +12,7 @@ const theme = createTheme({
     mode: "light",
     primary: {
       main: "#C87FD3",
+      contrastText: "#FFF",
     },
     secondary: {
       main: "#8D8BA7",
@@ -28,6 +29,14 @@ const theme = createTheme({
             backgroundColor: "#C87FD3",
           }),
         }),
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        outlinedPrimary: {
+          color: "#5D5A88",
+          borderColor: "#D4D2E3",
+        },
       },
     },
   },

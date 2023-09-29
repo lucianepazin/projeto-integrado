@@ -6,20 +6,34 @@ import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import { useQuery } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
 import { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { LoginModalCtx } from "../login/LoginModalProvider";
-
 export default function AdoptButton({ codPet }: { codPet: number }) {
   const [open, setOpen] = useState(false);
   const [backdrop, setBackdrop] = useState(false);
   const { status } = useSession();
   const { handleOpenLogin } = useContext(LoginModalCtx);
 
+  const { data: interested, isLoading } = useQuery({
+    queryFn: async ({ signal }) => {
+      const interesse = await fetch(`/api/pets/${codPet}/interesse`, {
+        signal,
+      });
+      return interesse.ok;
+    },
+    queryKey: ["interesse", status],
+    refetchOnWindowFocus: false,
+    refetchOnMount: false,
+    refetchOnReconnect: false,
+    enabled: status === "authenticated",
+  });
+
   const handleClickOpen = async () => {
-    setBackdrop(true);
     if (status === "authenticated") {
+      setBackdrop(true);
       fetch(`/api/pets/${codPet}/interesse`, {
         method: "POST",
       })
@@ -43,8 +57,16 @@ export default function AdoptButton({ codPet }: { codPet: number }) {
 
   return (
     <>
-      <Button variant="contained" onClick={handleClickOpen}>
-        Quero ADOTAR
+      <Button
+        variant="contained"
+        onClick={handleClickOpen}
+        disabled={status === "authenticated" && isLoading}
+      >
+        {isLoading
+          ? "Carregando..."
+          : interested
+          ? "Interesse enviado"
+          : "Quero ADOTAR"}
       </Button>
       <Dialog
         open={open}

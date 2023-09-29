@@ -1,6 +1,6 @@
 import AdoptButton from "@/components/pet/AdoptButton";
 import prisma from "@/lib/prisma";
-import { Box, Card, CardContent, Typography } from "@mui/material";
+import { Box, Card, CardContent, Container, Typography } from "@mui/material";
 import { intervalToDuration } from "date-fns";
 import Image from "next/image";
 
@@ -21,7 +21,7 @@ export default async function page({ params }: { params: { codPet: string } }) {
     end: pet?.dataNascimento,
   });
   return (
-    <div>
+    <Container>
       <Typography variant="h3" color="primary" sx={{ m: 2 }}>
         Encontre seu novo melhor amigo
       </Typography>
@@ -67,6 +67,6 @@ export default async function page({ params }: { params: { codPet: string } }) {
           </Box>
         </CardContent>
       </Card>
-    </div>
+    </Container>
   );
 }
