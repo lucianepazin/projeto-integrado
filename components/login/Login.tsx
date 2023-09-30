@@ -93,11 +93,7 @@ export default function Login() {
               </Link>
             </Grid>
             <Grid item>
-              <Link
-                href="#"
-                variant="body2"
-                onClick={() => toast.error(NOT_IMPLEMENTED)}
-              >
+              <Link href="/cadastro" variant="body2">
                 Cadastre-se
               </Link>
             </Grid>

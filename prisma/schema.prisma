@@ -97,14 +97,14 @@ model DicionarioEstado {
 }
 
 model Endereco {
-  codEndereco   Int    @id @default(autoincrement())
-  logradouro    String
-  numero        String
-  bairro        String
-  completemento String
-  CEP           String
-  codCidade     Int
-  codEstado     Int
+  codEndereco Int    @id @default(autoincrement())
+  logradouro  String
+  numero      String
+  bairro      String
+  complemento String
+  CEP         String
+  codCidade   Int
+  codEstado   Int
 
   dicionarioCidade DicionarioCidade @relation(fields: [codCidade], references: [codCidade])
   dicionarioEstado DicionarioEstado @relation(fields: [codEstado], references: [codEstado])

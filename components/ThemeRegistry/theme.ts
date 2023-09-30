@@ -17,6 +17,10 @@ const theme = createTheme({
     secondary: {
       main: "#8D8BA7",
     },
+    text: {
+      primary: "#5D5A88",
+      secondary: "#8D8BA7",
+    },
   },
   typography: {
     fontFamily: roboto.style.fontFamily,
@@ -29,6 +33,13 @@ const theme = createTheme({
             backgroundColor: "#C87FD3",
           }),
         }),
+      },
+    },
+    MuiTextField: {
+      defaultProps: {
+        size: "small",
+        helperText: " ",
+        // margin: 'normal'
       },
     },
     MuiButton: {

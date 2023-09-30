@@ -105,7 +105,7 @@ export default function Form({ type }: { type: "login" | "register" }) {
       {type === "login" ? (
         <p className="text-center text-sm text-gray-600">
           Não tem conta?{" "}
-          <Link href="/register" className="font-semibold text-gray-800">
+          <Link href="/cadastro" className="font-semibold text-gray-800">
             cadastre-se
           </Link>
         </p>

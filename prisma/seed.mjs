@@ -31,7 +31,7 @@ async function main() {
       logradouro: "Rua A",
       numero: "123",
       bairro: "Bairro A",
-      completemento: "Complemento A",
+      complemento: "Complemento A",
       CEP: "12345678",
       codCidade: 1200104,
       codEstado: 12,
@@ -75,7 +75,7 @@ async function main() {
     },
   });
 
-  const pet = await prisma.pet.upsert({
+  const pet1 = await prisma.pet.upsert({
     where: { codPet: 1 },
     update: {},
     create: {
@@ -99,12 +99,144 @@ async function main() {
     },
   });
 
-  const petsONG = await prisma.petsONG.upsert({
+  const pet2 = await prisma.pet.upsert({
+    where: { codPet: 2 },
+    update: {},
+    create: {
+      tipo: "Cachorro",
+      nome: "Chow",
+      dataNascimento: new Date("2022-06-01"),
+      fotoUrl: "https://images.dog.ceo/breeds/chow/n02112137_5022.jpg",
+      cor: "Caramelo",
+      porte: "Pequeno",
+      descricao: `Chow é um cachorro muito fofinho. Adote!`,
+      instituicao: "ONG 2",
+      telefone: "123456789",
+      codCidade: 4122503,
+      codEstado: 41,
+    },
+  });
+
+  const pet3 = await prisma.pet.upsert({
+    where: { codPet: 3 },
+    update: {},
+    create: {
+      tipo: "Cachorro",
+      nome: "Panda",
+      dataNascimento: new Date("2020-06-01"),
+      fotoUrl: "https://images.dog.ceo/breeds/stbernard/n02109525_13702.jpg",
+      cor: "Misto",
+      porte: "Grande",
+      descricao: `O Panda é um majestoso São Bernardo, um verdadeiro gigante de pêlo macio e olhos gentis. Ele é um cachorro incrivelmente grande e robusto, com uma pelagem densa e fofa que se destaca pela sua coloração predominantemente branca, pontuada por manchas pretas e marrons distintivas, que lembram o pelagem de um panda, o que lhe confere seu nome especial.`,
+      instituicao: "ONG 3",
+      telefone: "123456789",
+      codCidade: 4122503,
+      codEstado: 41,
+    },
+  });
+
+  const pet4 = await prisma.pet.upsert({
+    where: { codPet: 4 },
+    update: {},
+    create: {
+      tipo: "Cachorro",
+      nome: "Tutu",
+      dataNascimento: new Date("2012-08-15"),
+      fotoUrl:
+        "https://images.dog.ceo/breeds/retriever-golden/Z6A_4459-Edit_200808.jpg",
+      cor: "Bege",
+      porte: "Médio",
+      descricao: `Tutu é um adorável Golden Retriever, conhecido por sua personalidade amigável e leal.`,
+      instituicao: "Abrigo de Animais XYZ",
+      telefone: "987654321",
+      codCidade: 5201603,
+      codEstado: 52,
+    },
+  });
+
+  const pet5 = await prisma.pet.upsert({
+    where: { codPet: 5 },
+    update: {},
+    create: {
+      tipo: "Cachorro",
+      nome: "Pudim",
+      dataNascimento: new Date("2020-06-01"),
+      fotoUrl:
+        "https://images.dog.ceo/breeds/poodle-standard/n02113799_2504.jpg",
+      cor: "Marrom",
+      porte: "Médio",
+      descricao: `Docinho igual pudim!`,
+      instituicao: "ONG 3",
+      telefone: "123456789",
+      codCidade: 4122503,
+      codEstado: 41,
+    },
+  });
+
+  const pet6 = await prisma.pet.upsert({
+    where: { codPet: 6 },
+    update: {},
+    create: {
+      tipo: "Cachorro",
+      nome: "Luna",
+      dataNascimento: new Date("2017-04-10"),
+      fotoUrl: "https://images.dog.ceo/breeds/husky/n02110185_5871.jpg",
+      cor: "Branco e Cinza",
+      porte: "Médio",
+      descricao: `Luna é uma Husky Siberiana, conhecida por sua pelagem espessa e olhos azuis hipnotizantes.`,
+      instituicao: "Associação de Proteção Animal ABC",
+      telefone: "51989892020",
+      codCidade: 5222054,
+      codEstado: 52,
+    },
+  });
+
+  const pet1ONG = await prisma.petsONG.upsert({
     where: { codPetsONG: 1 },
     update: {},
     create: {
       codPessoaONG: pessoaONG.codPessoaONG,
-      codPet: pet.codPet,
+      codPet: pet1.codPet,
+    },
+  });
+  const pet2ONG = await prisma.petsONG.upsert({
+    where: { codPetsONG: 2 },
+    update: {},
+    create: {
+      codPessoaONG: pessoaONG.codPessoaONG,
+      codPet: pet2.codPet,
+    },
+  });
+  const pet3ONG = await prisma.petsONG.upsert({
+    where: { codPetsONG: 3 },
+    update: {},
+    create: {
+      codPessoaONG: pessoaONG.codPessoaONG,
+      codPet: pet3.codPet,
+    },
+  });
+  const pet4ONG = await prisma.petsONG.upsert({
+    where: { codPetsONG: 4 },
+    update: {},
+    create: {
+      codPessoaONG: pessoaONG.codPessoaONG,
+      codPet: pet4.codPet,
+    },
+  });
+  const pet5ONG = await prisma.petsONG.upsert({
+    where: { codPetsONG: 5 },
+    update: {},
+    create: {
+      codPessoaONG: pessoaONG.codPessoaONG,
+      codPet: pet5.codPet,
+    },
+  });
+  const pet6ONG = await prisma.petsONG.upsert({
+    where: { codPetsONG: 6 },
+    update: {},
+    create: {
+      codPessoaONG: pessoaONG.codPessoaONG,
+      codPet: pet6.codPet,
     },
   });
 
