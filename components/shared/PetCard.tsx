@@ -31,15 +31,9 @@ export default function PetCard({
           title="Cachorro"
         />
         <CardContent>
-          {/* <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Word of the Day
-        </Typography> */}
           <Typography variant="h5" component="div">
             {pet?.nome}
           </Typography>
-          {/* <Typography sx={{ mb: 1.5 }} color="text.secondary">
-
-</Typography> */}
           <Typography variant="body2">
             {age?.years !== undefined &&
               age.years > 0 &&
@@ -49,10 +43,6 @@ export default function PetCard({
             Porte {pet?.porte}
             <br />
             {city?.nome} - {state?.nome}
-            {/* <City codCidade={pet?.codCidade} /> */}
-            {/* 
-          <br />
-        {'"a benevolent smile"'} */}
           </Typography>
         </CardContent>
       </CardActionArea>

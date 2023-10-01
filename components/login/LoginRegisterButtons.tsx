@@ -8,7 +8,7 @@ import UnimplementedButton from "../shared/UnimplementedButton";
 import { LoginModalCtx } from "./LoginModalProvider";
 
 export default function LoginRegisterButtons() {
-  const { data: session, status } = useSession();
+  const { status } = useSession();
   const { handleOpenLogin } = useContext(LoginModalCtx);
 
   if (status === "authenticated") {

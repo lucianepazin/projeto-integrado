@@ -35,6 +35,7 @@ model PessoaAdotante {
   celular           String
 
   usuario         Usuario           @relation(fields: [codUsuario], references: [codUsuario])
+  endereco        Endereco          @relation(fields: [codEndereco], references: [codEndereco])
   interesseAdocao InteresseAdocao[]
 }
 
@@ -48,8 +49,9 @@ model PessoaONG {
   telefone     String
   codEndereco  Int
 
-  usuario Usuario   @relation(fields: [codUsuario], references: [codUsuario])
-  petsONG petsONG[]
+  usuario  Usuario   @relation(fields: [codUsuario], references: [codUsuario])
+  endereco Endereco  @relation(fields: [codEndereco], references: [codEndereco])
+  petsONG  petsONG[]
 }
 
 model Pet {
@@ -108,6 +110,8 @@ model Endereco {
 
   dicionarioCidade DicionarioCidade @relation(fields: [codCidade], references: [codCidade])
   dicionarioEstado DicionarioEstado @relation(fields: [codEstado], references: [codEstado])
+  PessoaAdotante   PessoaAdotante[]
+  PessoaONG        PessoaONG[]
 }
 
 model InteresseAdocao {

@@ -3,28 +3,26 @@ import TextFieldRHF from "@/components/shared/TextFieldRHF";
 import yup from "@/components/shared/yupTranslation";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Box, Button, Typography } from "@mui/material";
+import { useRouter } from "next/navigation";
+import { useContext } from "react";
 import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import { LoginModalCtx } from "../login/LoginModalProvider";
+import Cities from "./Cities";
+import States from "./States";
 
-export default function Ong() {
-  /*
-        
-      nome: "Pessoa Adotante",
-      CPF: "67347164060",
-      codEndereco: 1,
-      telefone: "123456789",
-      celular: "123456789",
-   */
+export default function Adotante() {
+  const { handleOpenLogin } = useContext(LoginModalCtx);
+  const router = useRouter();
   const { control, handleSubmit } = useForm({
     mode: "onBlur",
     defaultValues: {
       email: "",
       senha: "",
-      nomeONG: "",
-      CNPJ: "",
-      nomeResp: "",
-      CPFResp: "",
+      nome: "",
+      CPF: "",
       telefone: "",
-
+      celular: "",
       endereco: {
         logradouro: "",
         numero: "",
@@ -40,12 +38,10 @@ export default function Ong() {
         .object({
           email: yup.string().email().required(),
           senha: yup.string().min(6).required(),
-          nomeONG: yup.string().required(),
-          CNPJ: yup.string().required(),
-          nomeResp: yup.string().required(),
-          CPFResp: yup.string().required(),
+          nome: yup.string().required(),
+          CPF: yup.string().required(),
           telefone: yup.string().required(),
-
+          celular: yup.string().required(),
           endereco: yup.object({
             logradouro: yup.string().required(),
             numero: yup.string().required(),
@@ -63,36 +59,33 @@ export default function Ong() {
   const onValidSubmit: SubmitHandler<typeof control._defaultValues> = async (
     formFields,
   ) => {
-    console.log(formFields);
+    fetch("/api/auth/cadastro/adotante", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formFields),
+    }).then(async (res) => {
+      if (res.ok) {
+        toast.success("Conta criada. Voltando para a página Inicial...");
+        setTimeout(() => {
+          router.push("/");
+          setTimeout(() => {
+            handleOpenLogin();
+          }, 300);
+        }, 2000);
+      } else {
+        const { error } = await res.json();
+        toast.error(error);
+      }
+    });
   };
 
   const onInvalidSubmit: SubmitErrorHandler<
     typeof control._defaultValues
-  > = async (formErrors) => {
-    console.log(formErrors);
+  > = async (_formErrors) => {
+    toast.error("Preencha todos os campos corretamente");
   };
-
-  // fetch("/api/auth/register", {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  //   body: JSON.stringify({
-  //     email: event.currentTarget.email.value,
-  //     password: event.currentTarget.password.value,
-  //   }),
-  // }).then(async (res) => {
-  //   setLoading(false);
-  //   if (res.status === 200) {
-  //     toast.success("Account created! Redirecting to login...");
-  //     setTimeout(() => {
-  //       router.push("/login");
-  //     }, 2000);
-  //   } else {
-  //     const { error } = await res.json();
-  //     toast.error(error);
-  //   }
-  // });
 
   return (
     <Box
@@ -105,17 +98,6 @@ export default function Ong() {
         rowGap: 2,
       }}
     >
-      {/* <RadioRHF
-        name="isONG"
-        required
-        control={control}
-        row
-        options={[
-          { label: "Tenho interesse em adotar", value: false },
-          { label: "Quero divulgar animais para adoção", value: true },
-        ]}
-        sx={{ gridColumn: "span 6" }}
-      /> */}
       <TextFieldRHF
         control={control}
         name="email"
@@ -133,29 +115,15 @@ export default function Ong() {
       />
       <TextFieldRHF
         control={control}
-        name="nomeONG"
-        label="Nome da ONG"
+        name="nome"
+        label="Nome"
         required
         sx={{ gridColumn: "span 3" }}
       />
       <TextFieldRHF
         control={control}
-        name="CNPJ"
-        label="CNPJ"
-        required
-        sx={{ gridColumn: "span 3" }}
-      />
-      <TextFieldRHF
-        control={control}
-        name="nomeResp"
-        label="Nome do Responsável"
-        required
-        sx={{ gridColumn: "span 3" }}
-      />
-      <TextFieldRHF
-        control={control}
-        name="CPFResp"
-        label="CPF do Responsável"
+        name="CPF"
+        label="CPF"
         required
         sx={{ gridColumn: "span 3" }}
       />
@@ -163,6 +131,13 @@ export default function Ong() {
         control={control}
         name="telefone"
         label="Telefone"
+        required
+        sx={{ gridColumn: "span 3" }}
+      />
+      <TextFieldRHF
+        control={control}
+        name="celular"
+        label="Celular"
         required
         sx={{ gridColumn: "span 3" }}
       />
@@ -204,6 +179,8 @@ export default function Ong() {
         required
         sx={{ gridColumn: "span 3" }}
       />
+      <States control={control} />
+      <Cities control={control} />
       <Box
         sx={{
           gridColumn: "span 6",
