@@ -17,7 +17,7 @@ export default function AdoptButton({ codPet }: { codPet: number }) {
   const { status } = useSession();
   const { handleOpenLogin } = useContext(LoginModalCtx);
 
-  const { data: interested, isLoading } = useQuery({
+  const { data: interested, isInitialLoading } = useQuery({
     queryFn: async ({ signal }) => {
       const interesse = await fetch(`/api/pets/${codPet}/interesse`, {
         signal,
@@ -55,18 +55,20 @@ export default function AdoptButton({ codPet }: { codPet: number }) {
 
   const handleClose = () => setOpen(false);
 
+  function buttonText() {
+    if (interested) return "Interesse enviado";
+    if (isInitialLoading) return "Carregando...";
+    return "Quero ADOTAR";
+  }
+
   return (
     <>
       <Button
         variant="contained"
         onClick={handleClickOpen}
-        disabled={status === "authenticated" && isLoading}
+        disabled={status === "authenticated" && isInitialLoading}
       >
-        {isLoading
-          ? "Carregando..."
-          : interested
-          ? "Interesse enviado"
-          : "Quero ADOTAR"}
+        {buttonText()}
       </Button>
       <Dialog
         open={open}
